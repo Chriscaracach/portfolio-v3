@@ -1,0 +1,26 @@
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+.Content-Container {
+  padding: 50px 30px 30px 30px;
+}
+.About {
+  .About-Image {
+    border-radius: 20px;
+    float: left;
+    margin: 0px 15px 15px 0;
+  }
+}
+
+.About p {
+  text-align: justify;
+  font-size: 16px;
+}
+
+p strong {
+  font-size: 18px;
+}
+
+.Projects img {
+}
