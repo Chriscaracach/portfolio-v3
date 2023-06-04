@@ -1,4 +1,23 @@
+import { useState } from "react";
+import {
+  Button,
+  ButtonGroup,
+  ButtonToolbar,
+  Carousel,
+  Divider,
+  Stack,
+} from "rsuite";
+
 const Skills = () => {
+  const filterList = {
+    blur: { filter: "blur(10px)" },
+    hueRotate: { filter: "hue-rotate(180deg)" },
+    sepia: { filter: "sepia(80%)" },
+    grayscale: { filter: "grayscale(100%)" },
+    contrast: { filter: "contrast(300%)" },
+  };
+  const [galleryFilter, setGalleryFilter] = useState();
+
   // Galería de imágenes interactiva: Crea un componente de galería de imágenes que permita a los usuarios desplazarse y hacer zoom en las imágenes.
 
   // Calendario interactivo: Desarrolla un componente de calendario que muestre eventos, permita a los usuarios agregar nuevos eventos y les permita navegar por diferentes meses y años.
@@ -19,7 +38,85 @@ const Skills = () => {
 
   // Editor de texto enriquecido: Desarrolla un componente que permita a los usuarios ingresar y editar texto con funciones de formato enriquecido, como negrita, cursiva, listas, enlaces, etc.
 
-  return <div>Skills</div>;
+  return (
+    <Stack
+      direction="column"
+      className="Skills"
+      spacing={20}
+      divider={<Divider />}
+    >
+      <h1>Bueno, a ver, mostrame qué podés hacer..</h1>
+      {/* FILTER IMAGE GALLERY */}
+      <Stack.Item>
+        <Stack direction="column">
+          <Carousel autoplay>
+            <img
+              src="https://picsum.photos/id/10/640/480"
+              height="250"
+              style={filterList[galleryFilter]}
+            />
+            <img
+              src="https://picsum.photos/id/20/640/480"
+              height="250"
+              style={filterList[galleryFilter]}
+            />
+            <img
+              src="https://picsum.photos/id/30/640/480"
+              height="250"
+              style={filterList[galleryFilter]}
+            />
+            <img
+              src="https://picsum.photos/id/40/640/480"
+              height="250"
+              style={filterList[galleryFilter]}
+            />
+            <img
+              src="https://picsum.photos/id/50/640/480"
+              height="250"
+              style={filterList[galleryFilter]}
+            />
+          </Carousel>
+          <p>Algunos filtros</p>
+          <Stack.Item>
+            <ButtonToolbar>
+              <ButtonGroup>
+                <Button
+                  appearance="primary"
+                  onClick={() => setGalleryFilter("blur")}
+                >
+                  Blur
+                </Button>
+                <Button
+                  appearance="primary"
+                  onClick={() => setGalleryFilter("hueRotate")}
+                >
+                  Hue-Rotate
+                </Button>
+                <Button
+                  appearance="primary"
+                  onClick={() => setGalleryFilter("sepia")}
+                >
+                  Sepia
+                </Button>
+                <Button
+                  appearance="primary"
+                  onClick={() => setGalleryFilter("grayscale")}
+                >
+                  GrayScale
+                </Button>
+                <Button
+                  appearance="primary"
+                  onClick={() => setGalleryFilter("contrast")}
+                >
+                  Contrast
+                </Button>
+              </ButtonGroup>
+            </ButtonToolbar>
+          </Stack.Item>
+        </Stack>
+      </Stack.Item>
+    </Stack>
+  );
 };
 
 export default Skills;

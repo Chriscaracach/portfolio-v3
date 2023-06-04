@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 const Image = ({ path, width, height, className }) => {
   const { src } = useImage({
     srcList: path,
+    useSuspense: true,
   });
 
   return (
