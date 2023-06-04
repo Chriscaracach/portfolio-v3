@@ -18,8 +18,6 @@ const Skills = () => {
   };
   const [galleryFilter, setGalleryFilter] = useState();
 
-  // Galería de imágenes interactiva: Crea un componente de galería de imágenes que permita a los usuarios desplazarse y hacer zoom en las imágenes.
-
   // Calendario interactivo: Desarrolla un componente de calendario que muestre eventos, permita a los usuarios agregar nuevos eventos y les permita navegar por diferentes meses y años.
 
   // Mapa interactivo: Utiliza una biblioteca como Google Maps para crear un componente que muestre un mapa interactivo y permita a los usuarios buscar ubicaciones, agregar marcadores y obtener información adicional.
