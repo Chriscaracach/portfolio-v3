@@ -1,18 +1,21 @@
-import { Carousel, Panel, Stack } from "rsuite";
+import { Button, Carousel, Panel, Stack, Tag, TagGroup } from "rsuite";
 import { useEffect, useState } from "react";
 import { ProjectsData } from "./data";
 import { Icon } from "@rsuite/icons";
-import { DiGithub } from "react-icons/di";
-import { Link } from "react-router-dom";
+import { DiGithubBadge } from "react-icons/di";
 import GlobalIcon from "@rsuite/icons/Global";
 
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [currentProject, setCurrentProject] = useState({});
 
+  const colors = ["red", "orange", "yellow", "green", "blue", "violet"];
+
   useEffect(() => {
     setCurrentProject(ProjectsData[activeIndex]);
+    console.log(currentProject.badges);
   }, [activeIndex]);
+
   return (
     <Panel bordered>
       <Carousel
@@ -21,10 +24,7 @@ const Projects = () => {
         onSelect={(index) => setActiveIndex(index)}
       >
         <img src="src/assets/img/proj-game-of-life.webp" height="250" />
-        <img
-          src="https://via.placeholder.com/600x250/8f8e94/FFFFFF?text=3"
-          height="250"
-        />
+        <img src="src/assets/img/proj-collatz.webp" height="250" />
         <img
           src="https://via.placeholder.com/600x250/8f8e94/FFFFFF?text=4"
           height="250"
@@ -35,14 +35,23 @@ const Projects = () => {
         />
       </Carousel>
       <h3>{currentProject.title}</h3>
+      <TagGroup>
+        {currentProject["badges"].map((badge, i) => {
+          return (
+            <Tag key={badge} color={colors[i]}>
+              {badge}
+            </Tag>
+          );
+        })}
+      </TagGroup>
       <p>{currentProject.description}</p>
-      <Stack>
-        <Link>
-          <Icon as={DiGithub} />
-        </Link>
-        <Link>
-          <Icon as={GlobalIcon} />
-        </Link>
+      <Stack justifyContent="center">
+        <Button appearance="link">
+          <Icon as={DiGithubBadge} style={{ fontSize: "60px" }} />
+        </Button>
+        <Button appearance="link">
+          <Icon as={GlobalIcon} style={{ fontSize: "45px" }} />
+        </Button>
       </Stack>
     </Panel>
   );
